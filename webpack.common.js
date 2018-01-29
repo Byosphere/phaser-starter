@@ -6,10 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let config = {
     entry: "./src/js/index.js",
-    output: {
-        path: path.resolve(__dirname, "./public"),
-        filename: "./js/bundle.js"
-    },
     module: {
         rules: [{
             test: /\.js$/,
@@ -25,9 +21,8 @@ let config = {
     },
     plugins: [
         new CleanWebpackPlugin(['public']),
-        new ExtractTextWebpackPlugin('css/styles.css'),
         new HtmlWebpackPlugin({
-            title: 'My Page Title',
+            title: 'Phaser Typescript Starter',
             inject: true,
             template: 'src/index-template.html'
         })
