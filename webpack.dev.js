@@ -6,7 +6,7 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
     output: {
         path: path.resolve(__dirname, "./public"),
-        filename: "./js/bundle.js"
+        filename: "./js/[name].js"
     },
     devServer: {
         contentBase: path.resolve(__dirname, './public'),

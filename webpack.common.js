@@ -5,19 +5,25 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let config = {
-    entry: "./src/js/index.js",
+    entry: {
+        app: "./src/ts/index.ts"
+    },
     module: {
         rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader'
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/
         }, {
             test: /\.scss$/,
+            exclude: /node_modules/,
             use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
                 fallback: 'style-loader',
                 use: ['css-loader', 'sass-loader', 'postcss-loader']
             }))
         }]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js']
     },
     plugins: [
         new CleanWebpackPlugin(['public']),

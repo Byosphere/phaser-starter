@@ -8,7 +8,7 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
     output: {
         path: path.resolve(__dirname, "./public"),
-        filename: "./js/bundle.[hash].min.js"
+        filename: "./js/[name].[hash].min.js"
     },
     devtool: 'source-map',
     plugins: [
