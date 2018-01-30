@@ -13,7 +13,7 @@ const p2 = path.join(phaserModule, "build", "custom", "p2.js");
 
 let config = {
     entry: {
-        app: "./src/ts/index.ts"
+        bundle: './src/ts/index.ts'
     },
     module: {
         rules: [{
