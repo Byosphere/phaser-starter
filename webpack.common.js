@@ -21,6 +21,10 @@ let config = {
             use: 'ts-loader',
             exclude: /node_modules/
         }, {
+            test: /\.ts$/,
+            enforce: 'pre',
+            loader: 'tslint-loader'
+        }, {
             test: /\.scss$/,
             exclude: /node_modules/,
             use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({

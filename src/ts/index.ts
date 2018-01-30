@@ -1,7 +1,7 @@
-require('./../scss/index.scss');
+import "./../scss/index.scss";
 
-import { Game } from './game';
+import { Game } from "./game";
 
 window.onload = () => {
-    var game = new Game();
+    const game = new Game();
 };
