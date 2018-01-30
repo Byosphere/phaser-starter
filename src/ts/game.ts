@@ -6,6 +6,7 @@ import { Constants } from "./utils/constants";
 
 import { Booter } from "./states/booter";
 import { Preloader } from "./states/preloader";
+import { MainMenu } from "./states/main-menu";
 
 export class Game extends Phaser.Game {
 
@@ -14,6 +15,7 @@ export class Game extends Phaser.Game {
 
         this.state.add("Boot", Booter, false);
         this.state.add("Preloader", Preloader, false);
+        this.state.add("MainMenu", MainMenu, false);
     }
 
 }
