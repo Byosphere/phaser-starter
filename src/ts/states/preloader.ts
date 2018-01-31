@@ -1,3 +1,13 @@
+import "phaser-ce";
+
 export class Preloader extends Phaser.State {
-    // TODO
+
+    public preload() {
+        // TODO
+    }
+
+    public create() {
+        // TODO
+    }
+
 }

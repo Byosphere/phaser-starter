@@ -16,6 +16,8 @@ export class Game extends Phaser.Game {
         this.state.add("Boot", Booter, false);
         this.state.add("Preloader", Preloader, false);
         this.state.add("MainMenu", MainMenu, false);
+
+        this.state.start("Boot");
     }
 
 }

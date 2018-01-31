@@ -32,6 +32,9 @@ let config = {
                 use: ['css-loader', 'sass-loader', 'postcss-loader']
             }))
         }, {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: 'file-loader'
+        }, {
             test: /pixi\.js/,
             loader: "expose-loader?PIXI"
         }, {
