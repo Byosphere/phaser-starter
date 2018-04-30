@@ -4,12 +4,8 @@ const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const rootDir = path.resolve( __dirname );
-
-const phaserModule = path.join(rootDir, "node_modules", "phaser-ce");
-const phaser = path.join(phaserModule, "build", "custom", "phaser-split.js");
-const pixi = path.join(phaserModule, "build", "custom", "pixi.js");
-const p2 = path.join(phaserModule, "build", "custom", "p2.js");
+const phaserModule = path.join(__dirname, '/node_modules/phaser/')
+const phaser = path.join(phaserModule, 'src/phaser.js')
 
 let config = {
     entry: {
@@ -34,23 +30,16 @@ let config = {
         }, {
             test: /\.(png|svg|jpg|gif)$/,
             use: 'file-loader'
-        }, {
-            test: /pixi\.js/,
-            loader: "expose-loader?PIXI"
-        }, {
-            test: /phaser-split\.js/,
-            loader: "expose-loader?Phaser"
-        }, {
-            test: /p2\.js/,
-            loader: "expose-loader?p2"
+        },
+        {
+            test: [/\.vert$/, /\.frag$/],
+            use: 'raw-loader'
         }]
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
         alias: {
-            'pixi': pixi,
-            'p2': p2,
-            'phaser-ce': phaser
+            'phaser': phaser
         }
     },
     plugins: [
@@ -59,6 +48,11 @@ let config = {
             title: 'Phaser Typescript Starter',
             inject: true,
             template: 'src/index-template.html'
+        }),
+        new webpack.DefinePlugin({
+            __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
+            'CANVAS_RENDERER': JSON.stringify(true),
+            'WEBGL_RENDERER': JSON.stringify(true)
         })
     ]
 };

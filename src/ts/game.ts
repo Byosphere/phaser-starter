@@ -1,23 +1,38 @@
-import "p2";
-import "pixi";
-import "phaser-ce";
+import "phaser";
 
 import { Constants } from "./utils/constants";
-
-import { Booter } from "./states/booter";
-import { Preloader } from "./states/preloader";
-import { MainMenu } from "./states/main-menu";
+import { Booter } from "./scenes/booter";
+import { Preloader } from "./scenes/preloader";
+import { TitleScene } from "./scenes/titleScene";
 
 export class Game extends Phaser.Game {
 
     constructor() {
-        super(Constants.GAME_WIDTH, Constants.GAME_HEIGHT, Phaser.AUTO, "content");
-
-        this.state.add("Boot", Booter, false);
-        this.state.add("Preloader", Preloader, false);
-        this.state.add("MainMenu", MainMenu, false);
-
-        this.state.start("Boot");
+        super({
+            type: Phaser.AUTO,
+            width: Constants.GAME_WIDTH,
+            height: Constants.GAME_HEIGHT,
+            parent: "content",
+            physics: {
+                default: "arcade",
+            },
+            pixelArt: true,
+            transparent: false,
+            scene: [Booter, Preloader, TitleScene],
+            title: Constants.GAME_TITLE,
+            version: Constants.GAME_VERSION,
+            url: "http://mygameurl.com",
+            // console banner
+            banner: {
+                background: [
+                    "#fff200",
+                    "#38f0e8",
+                    "#00bff3",
+                    "#ec008c",
+                ],
+                hidePhaser: true,
+                text: "#ffffff",
+            },
+        });
     }
-
 }
