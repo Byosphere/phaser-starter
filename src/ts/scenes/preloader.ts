@@ -11,7 +11,7 @@ export class Preloader extends Phaser.Scene {
     }
 
     public create() {
-        // TODO
+        this.scene.start("titlescene");
     }
 
 }

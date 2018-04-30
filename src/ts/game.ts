@@ -1,6 +1,6 @@
 import "phaser";
 
-import { Constants } from "./utils/constants";
+import { Constants } from "./data/constants";
 import { Booter } from "./scenes/booter";
 import { Preloader } from "./scenes/preloader";
 import { TitleScene } from "./scenes/titleScene";
